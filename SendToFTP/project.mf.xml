@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<manifest>
+    <application name="SendToFTP">
+        <crown name="SendToFTP">
+            <desc>user script</desc>
+            <serves>
+                <event name="recordStatus">
+                    <desc>No description yet...</desc>
+                    <param name="record" type="bool" desc="No description yet..."/>
+                </event>
+                <event name="errorMessage">
+                    <desc>No description yet...</desc>
+                    <param name="error" type="string" desc="No description yet..."/>
+                </event>
+                <function name="setAddress">
+                    <desc>No description yet...</desc>
+                    <param name="address" type="string" desc="No description yet..."/>
+                </function>
+                <function name="startRecording">
+                    <desc>No description yet...</desc>
+                </function>
+                <function name="stopRecording">
+                    <desc>No description yet...</desc>
+                </function>
+                <function name="setFolder">
+                    <desc>No description yet...</desc>
+                    <param name="folder" type="string" desc="No description yet..."/>
+                </function>
+                <function name="getAddress">
+                    <desc>No description yet...</desc>
+                    <return name="address" type="string" desc="No description yet..."/>
+                </function>
+                <function name="getFolder">
+                    <desc>No description yet...</desc>
+                    <return name="folder" type="string" desc="No description yet..."/>
+                </function>
+            </serves>
+        </crown>
+        <meta key="author">AppSpace Sample</meta>
+        <meta key="version">2.5.0</meta>
+        <meta key="licensed">false</meta>
+        <meta key="priority">low</meta>
+        <meta key="copy-protected">false</meta>
+        <meta key="read-protected">false</meta>
+        <entry path="pages" default="trispectorp.msdd">
+            <file type="application/zip">trispectorp.msdd</file>
+        </entry>
+        <entry path="scripts" default="Main.lua">
+            <file type="text/x-lua">Camera.lua</file>
+            <file type="text/x-lua">Main.lua</file>
+            <file type="text/x-lua">SendToFTP.lua</file>
+        </entry>
+    </application>
+</manifest>
