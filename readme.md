@@ -20,4 +20,4 @@ camera is required to be to run the App
 
 ### Topics
 
-Device, TrispectorP, Communication, Acquisition, Sample, SICK-AppSpace
+device, trispectorp, communication, acquisition, sample, sick-appspace
