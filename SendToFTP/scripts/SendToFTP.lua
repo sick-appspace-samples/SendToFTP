@@ -13,8 +13,8 @@ local port = 21
 local error = 'All fields need to be filled in'
 local ftp = nil
 
--- Set the user's input as address
---@setAddress(newAddress:string)
+---Set the user's input as address
+---@param newAddress string
 local function setAddress(newAddress)
   print("Address: "..newAddress)
   address = newAddress
@@ -22,28 +22,27 @@ local function setAddress(newAddress)
 end
 Script.serveFunction('SendToFTP.setAddress', setAddress)
 
--- Get the address
+---Get the address
 local function getAddress()
   return address
 end
 Script.serveFunction('SendToFTP.getAddress', getAddress)
 
--- Set the user's input as gFolder
---@setFolder(newFolder:string)
+---Set the user's input as gFolder
+---@param newFolder string
 local function setFolder(newFolder)
   print('Folder: C:/ftp/' .. newFolder)
   gFolder = newFolder
 end
 Script.serveFunction('SendToFTP.setFolder', setFolder)
 
--- Get the folder
+---Get the folder
 local function getFolder()
   return gFolder
 end
 Script.serveFunction('SendToFTP.getFolder', getFolder)
 
--- Checks if the inputs are valid
--- and starts the saving process
+---Checks if the inputs are valid and starts the saving process
 local function startRecording()
   if address == '' or gFolder == '' then
     Script.notifyEvent('errorMessage', error)
@@ -55,15 +54,14 @@ local function startRecording()
 end
 Script.serveFunction('SendToFTP.startRecording', startRecording)
 
--- Stops the saving process
+---Stops the saving process
 local function stopRecording()
   gRecord = false
   Script.notifyEvent('recordStatus', gRecord)
 end
 Script.serveFunction('SendToFTP.stopRecording', stopRecording)
 
--- Creates an FTP client object with
--- properties according to user input
+---Creates an FTP client object with properties according to user input
 function gSetupFTPClient()
   if address == nil then
     print('Address is required')
@@ -77,8 +75,11 @@ function gSetupFTPClient()
 end
 
 
--- Sends any data to the FTP server
---@sendDataToFTP(data: Object, gFolder: string, name: string, config: Image.Provider.Camera.V3TConfig3D)
+---Sends any data to the FTP server
+---@param data Object
+---@param gFolder string
+---@param name string
+---@param config Image.Provider.Camera.V3TConfig3D
 local function sendDataToFTP(data, gFolder, name, config)
   local success = false
   -- Try to connect to the server
@@ -169,8 +170,12 @@ local function sendDataToFTP(data, gFolder, name, config)
   return success
 end
 
--- Saves an image to the FTP server
---@gSendImageToFTP(hMap: Image, iMap:Image, _sensorData:SensorData, gFolder:string, name:string)
+---Saves an image to the FTP server
+---@param hMap Image
+---@param iMap Image
+---@param _sensorData SensorData
+---@param gFolder string
+---@param name string
 function gSendImageToFTP(hMap, iMap, _sensorData, gFolder, name)
   local data = Object.serialize({hMap, iMap, _sensorData}, 'JSON')
   local configData = Object.serialize({gImageConfig3D}, 'JSON')

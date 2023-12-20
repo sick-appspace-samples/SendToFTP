@@ -32,7 +32,7 @@ gImageConfig3D = Image.Provider.Camera.V3TConfig3D.create()
 --End of Global Scope-----------------------------------------------------------
 
 --Start of Function and Event Scope---------------------------------------------
---@main()
+
 local function main()
   -- Define path to config file
   local jobPath = 'public/Image3DConfig.json'

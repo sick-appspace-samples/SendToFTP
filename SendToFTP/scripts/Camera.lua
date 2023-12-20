@@ -6,7 +6,8 @@ gViewer:setID('viewer3D')
 -------------------------------------
 -- Load previously saved config -----
 -------------------------------------
---@gLoadConfig(jobPath:string)
+
+---@param jobPath string
 function gLoadConfig(jobPath)
   -- Check if file exists
   if not File.exists(jobPath) then
@@ -27,7 +28,9 @@ end
 -------------------------------------
 -- Image Callback -------------------
 -------------------------------------
---@gOnNewImage(images:Image, sensorData:SensorData)
+
+---@param images Image
+---@param sensorData SensorData
 function gOnNewImage(images, sensorData)
   if #images == 2 then -- Only 3D images
     local heightMap = images[1]
